@@ -1,10 +1,11 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { css } from "@emotion/core"
-import { Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 
 export default ({ data }) => {
+  console.log(data)
   return (
     <Layout>
       <div>
@@ -14,40 +15,28 @@ export default ({ data }) => {
             border-bottom: 1px solid;
           `}
         >
-          ใครว่าการยิงฟรีคิกมันยาก
+          Amazing Pandas Eating Things
         </h1>
         <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <Link
-              to={node.fields.slug}
+            <p>{node.excerpt}</p>
+            <h3
               css={css`
-                text-decoration: none;
-                color: inherit;
+                margin-bottom: ${rhythm(1)};
+                margin-top: ${rhythm(-0.5)};
+                color: #bbb;
               `}
             >
-              <h3
+              {node.frontmatter.title}{" "}
+              <span
                 css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
+                  color: #111;
                 `}
               >
-                {node.frontmatter.title}{" "}
-                <span
-                  css={css`
-                    color: #555;
-                  `}
-                >
-                  — {node.frontmatter.date}
-                </span>
-              </h3>
-              <p
-                css={css`
-                  line-height: 1.7;
-                `}
-              >
-                {node.excerpt}
-              </p>
-            </Link>
+                — {node.frontmatter.date}
+              </span>
+            </h3>
           </div>
         ))}
       </div>
@@ -57,7 +46,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: ASC }) {
       totalCount
       edges {
         node {
@@ -65,9 +54,6 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
           }
           excerpt
         }
