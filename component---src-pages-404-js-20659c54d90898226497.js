@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{w2l6:function(e,n,o){"use strict";o.r(n);o("q1tI");var t=o("qKvR"),b=o("Wbzz"),l=o("p3AD"),a=o("Bl7J");n.default=function(){return Object(t.b)(a.a,null,Object(t.b)("h1",null,"Page not found"),Object(t.b)("p",null,"Oops! The page you are looking for has been removed or relocated."),Object(t.b)(b.Link,{to:"/"},Object(t.b)("h3",{css:Object(t.a)("margin-bottom:",Object(l.a)(2),";display:inline-block;font-style:normal;")},"กลับไปหน้าแรก")))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-20659c54d90898226497.js.map
